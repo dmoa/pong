@@ -18,14 +18,13 @@ function love.load()
   playerHeight = 80
   playerx = 50
   playery = love.graphics.getHeight() / 2 - playerHeight / 2
-  playerspeed = 2.5
+  playerspeed = 200
 
   balllength = 10
   ballx = love.graphics.getWidth() / 2 - balllength / 2
   bally = love.graphics.getHeight() / 2 - balllength / 2
-  ballxv = - 1
-  ballyv = -1
-  speedInc = 0.2
+  ballxv = - 100
+  ballyv = -100
 end
 
 
@@ -46,11 +45,11 @@ function love.draw()
 end
 
 
-function love.update()
+function love.update(dt)
 
   if playingGame then
-    ballUpdate()
-    playerUpdate()
+    ballUpdate(dt)
+    playerUpdate(dt)
   end
 
   if love.keyboard.isDown("return") and playingGame == false then
@@ -60,8 +59,8 @@ function love.update()
     playery = love.graphics.getHeight() / 2 - playerHeight / 2
     ballx = love.graphics.getWidth() / 2 - balllength / 2
     bally = love.graphics.getHeight() / 2 - balllength / 2
-    ballxv = - 1
-    ballyv = -1
+    ballxv = - 100
+    ballyv = -100
     print("restarting")
   end
 

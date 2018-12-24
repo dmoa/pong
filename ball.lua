@@ -1,12 +1,12 @@
-function ballUpdate()
+function ballUpdate(dt)
 
-  ballx = ballx + ballxv
-  bally = bally + ballyv
+  ballx = ballx + (ballxv * dt)
+  bally = bally + (ballyv * dt)
 
 
   --so the ball doesn't freak out at high speeds
   if bally + balllength >= playery and bally <= playery + playerHeight then
-    if ballx + ballxv < playerx + playerWidth and ballx + ballxv + balllength > playerx then
+    if ballx + (ballxv * dt) < playerx + playerWidth and ballx + (ballxv * dt) + balllength > playerx then
       ballx = playerx + playerWidth
       print("saving the day")
     end
@@ -50,17 +50,6 @@ function ballUpdate()
       score = score + 1
       ballxv = ballxv * - 1
       mainText:setf(score, love.graphics.getWidth(), "left")
-
-      if ballxv < 0 then
-        ballxv = ballxv - speedInc
-      else
-        ballxv = ballxv + speedInc
-      end
-      if ballyv < 0 then
-        ballyv = ballyv - speedInc
-      else
-        ballyv = ballyv + speedInc
-      end
 
     end
   end

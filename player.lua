@@ -1,9 +1,9 @@
-function playerUpdate()
+function playerUpdate(dt)
   if love.keyboard.isDown("up") then
-    playery = playery - playerspeed
+    playery = playery - (playerspeed * dt)
   end
   if love.keyboard.isDown("down") then
-    playery = playery + playerspeed
+    playery = playery + (playerspeed * dt)
   end
   if playery <= 0 then
     playery = 0
